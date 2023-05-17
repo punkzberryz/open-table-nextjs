@@ -1,4 +1,5 @@
-import Header from "./components/Header";
+import type { Metadata } from "next";
+
 import RestaurantNavBar from "./components/RestaurantNavBar";
 import Title from "./components/Title";
 import Rating from "./components/Rating";
@@ -6,6 +7,12 @@ import Description from "./components/Description";
 import Images from "./components/Images";
 import Reviews from "./components/Reviews";
 import ReservationCard from "./components/ReservationCard";
+
+export const metadata: Metadata = {
+  title: "Search | OpenTable",
+  description: "OpenTable clone with NextJs",
+};
+
 export default function RestaurantDetails() {
   return (
     <>

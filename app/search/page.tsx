@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Header from "./components/Header";
 import SearchSideBar from "./components/SearchSideBar";
 import RestaurantCard from "./components/RestaurantCard";
+
+export const metadata: Metadata = {
+  title: "Search | OpenTable",
+  description: "OpenTable clone with NextJs",
+};
+
 export default function Search() {
   return (
     <>
