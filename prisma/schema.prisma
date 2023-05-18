@@ -23,8 +23,8 @@ model Restaurant {
   items       Item[]
   location_id Int
   location    Location @relation(fields: [location_id], references: [id])
-  cruisine_id Int
-  cruisine    Cruisine @relation(fields: [cruisine_id], references: [id])
+  cuisine_id Int
+  cuisine    Cuisine @relation(fields: [cuisine_id], references: [id])
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
 }
@@ -48,7 +48,7 @@ model Location {
   updated_at  DateTime     @updatedAt
 }
 
-model Cruisine {
+model Cuisine {
   id          Int          @id @default(autoincrement())
   name        String
   restaurants Restaurant[]
