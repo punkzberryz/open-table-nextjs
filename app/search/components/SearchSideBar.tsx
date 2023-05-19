@@ -1,14 +1,44 @@
-export default function SearchSideBar() {
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+
+const select = {
+  id: true,
+  name: true,
+};
+
+interface result {
+  id: number;
+  name: string;
+}
+
+const fetchLocations = async (): Promise<result[]> => {
+  const locations = await prisma.location.findMany({
+    select,
+  });
+  if (!locations) throw new Error();
+  return locations;
+};
+
+const fetchCuisines = async (): Promise<result[]> => {
+  const cuisines = await prisma.cuisine.findMany({
+    select,
+  });
+  if (!cuisines) throw new Error();
+  return cuisines;
+};
+
+export default async function SearchSideBar() {
+  const locations = await fetchLocations();
+  const cuisines = await fetchCuisines();
+  console.log(cuisines);
   return (
     <div className="w-1/5">
       <div className="border-b pb-4">
         <h1 className="mb-2">Region</h1>
-        <p className="font-light text-reg">Toronto</p>
-        <p className="font-light text-reg">Ottawa</p>
-        <p className="font-light text-reg">Montreal</p>
-        <p className="font-light text-reg">Hamilton</p>
-        <p className="font-light text-reg">Kingston</p>
-        <p className="font-light text-reg">Niagara</p>
+        {locations.map((location) => (
+          <p className="font-light text-reg capitalize">{location.name}</p>
+        ))}
       </div>
       <div className="border-b pb-4 mt-3">
         <h1 className="mb-2">Cuisine</h1>
