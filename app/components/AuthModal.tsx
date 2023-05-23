@@ -31,7 +31,7 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
     return isSignIn ? signinContent : signupContent;
   };
 
-  const hendleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     setInputs({
       ...inputs,
       [e.target.name]: e.target.value,
@@ -119,7 +119,7 @@ export default function AuthModal({ isSignIn }: { isSignIn: boolean }) {
                 </h2>
                 <AuthModalInput
                   inputs={inputs}
-                  handleChangeInput={hendleChangeInput}
+                  handleChangeInput={handleChangeInput}
                   isSignIn={isSignIn}
                 />
                 <button

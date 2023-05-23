@@ -38,15 +38,16 @@ const fetchRestaurantBySlug = async (slug: string): Promise<Restaurant> => {
       close_time: true,
     },
   });
+
   if (!restaurant) {
     notFound();
-    // throw new Error("Cannot find restaurant");
   }
+
   return restaurant;
 };
 
 export const metadata: Metadata = {
-  title: "Search | OpenTable",
+  title: "Milestones Grill (Toronto) | OpenTable",
   description: "OpenTable clone with NextJs",
 };
 
@@ -60,7 +61,7 @@ export default async function RestaurantDetails({
   return (
     <>
       <div className="bg-white w-[70%] rounded p-3 shadow">
-        <RestaurantNavBar slug={params.slug} />
+        <RestaurantNavBar slug={restaurant.slug} />
         <Title name={restaurant.name} />
         <Rating reviews={restaurant.reviews} />
         <Description description={restaurant.description} />
@@ -71,6 +72,7 @@ export default async function RestaurantDetails({
         <ReservationCard
           openTime={restaurant.open_time}
           closeTime={restaurant.close_time}
+          slug={restaurant.slug}
         />
       </div>
     </>
